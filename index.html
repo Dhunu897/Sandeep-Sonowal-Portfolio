@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -24,6 +25,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#vecv-gallery" class="nav-link">VECV Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a href="#projects" class="nav-link">Projects</a>
@@ -49,18 +53,26 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="highlight">Sandeep Sonowal</span>
+                        Hi, I'm <span class="highlight">Sandeep Sonowal</span>
                     </h1>
                     <h2 class="hero-subtitle">
-                        Consultant & Marketing Manager | Former Channel Sales Manager | Educator
+                        Consultant | Marketing Strategist | Sales Professional | Educator
                     </h2>
+                    <p class="hero-location">
+                        Based in Guwahati | Open to Opportunities Pan-India & Remote
+                    </p>
+                    <p class="hero-quote">
+                        <em>"Turning strategy into growth, ideas into impact, and learning into leadership."</em>
+                    </p>
                     <p class="hero-description">
-                        Driving business growth through strategic marketing, client management, and innovative digital solutions. 
-                        Passionate about creating impactful projects and mentoring the next generation.
+                        Results-driven professional with expertise in sales strategy, marketing execution, digital product management, and academic mentorship. With over 2 years of corporate and entrepreneurial experience, I bring a unique blend of hands-on leadership, cross-functional collaboration, and innovative problem-solving to every role I take on.
                     </p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="Sandeep Sonowal CV 2025.pdf" target="_blank" class="btn btn-resume">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
                         <a href="https://www.linkedin.com/in/sandeep-sonowal-b09496345/" target="_blank" class="btn btn-linkedin">
                             <i class="fab fa-linkedin"></i> LinkedIn
                         </a>
@@ -93,17 +105,17 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Professional Journey</h3>
+                    <h3>Who I Am</h3>
                     <p>
-                        I'm a dynamic professional with a strong foundation in marketing and business development. 
-                        Currently serving as a Consultant & Manager at Clear Solutions Services, I specialize in 
-                        driving client acquisition, digital marketing, and project delivery across diverse industries.
+                        I'm a results-driven professional with expertise in sales strategy, marketing execution, digital product management, and academic mentorship. With over 2 years of corporate and entrepreneurial experience, I bring a unique blend of hands-on leadership, cross-functional collaboration, and innovative problem-solving to every role I take on.
                     </p>
-                    <p>
-                        My experience spans from managing sales operations for heavy-duty trucks across Northeast India 
-                        to leading digital transformation projects and mentoring students. I believe in creating 
-                        sustainable business value through strategic thinking and innovative solutions.
-                    </p>
+                    <div class="current-role">
+                        <h4>Current Role</h4>
+                        <h5>Consultant & Manager at Clear Solutions Services</h5>
+                        <p>
+                            I help small and medium businesses adopt digital transformation by leading marketing strategy, project development, and execution from concept to launch. I consult clients, supervise a multidisciplinary team, and ensure timely delivery and ROI-driven outcomes.
+                        </p>
+                    </div>
                 </div>
                 <div class="education-card">
                     <h3>Education</h3>
@@ -130,6 +142,34 @@
         </div>
     </section>
 
+    <!-- Resume Download Section -->
+    <section id="resume" class="resume-download">
+        <div class="container">
+            <div class="resume-content">
+                <div class="resume-info">
+                    <h3>📄 Get My Complete Resume</h3>
+                    <p>Download my detailed CV to learn more about my qualifications, experience, and achievements in a comprehensive format.</p>
+                    <div class="resume-details">
+                        <div class="resume-detail">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Sandeep Sonowal CV 2025.pdf</span>
+                        </div>
+                        <div class="resume-detail">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Updated May 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="resume-action">
+                    <a href="Sandeep Sonowal CV 2025.pdf" target="_blank" class="btn btn-resume-large">
+                        <i class="fas fa-download"></i>
+                        <span>Download Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
@@ -147,10 +187,9 @@
                             <span class="duration">May 2024 – Present</span>
                         </div>
                         <ul class="timeline-achievements">
-                            <li>Driving client acquisition, digital marketing, and project delivery</li>
-                            <li>Leading proposals, stakeholder coordination, and product planning</li>
-                            <li>Executing branding and positioning strategies for diverse clients</li>
-                            <li>Supervising cross-functional teams of developers and designers</li>
+                            <li>Built proposals, led client acquisition, and managed key stakeholder relationships</li>
+                            <li>Oversaw UI/UX, development, QA, and deployment across web & mobile projects</li>
+                            <li>Enhanced branding and positioning for clients across construction, education, and healthcare sectors</li>
                         </ul>
                     </div>
                 </div>
@@ -163,11 +202,92 @@
                             <span class="duration">Apr 2022 – Nov 2023</span>
                         </div>
                         <ul class="timeline-achievements">
-                            <li>Managed sales of HD trucks across Northeast India</li>
-                            <li>Oversaw 4 dealerships and 20+ sales executives</li>
-                            <li>Boosted Eicher's regional market share from 0.1% to 5%</li>
-                            <li>Generated monthly revenue of ₹3.5 Cr through channel partnerships</li>
+                            <li>Managed Eicher's HD Trucks vertical across Northeast India</li>
+                            <li>Oversaw 4 dealerships and 20+ sales reps; led sales planning & dealer management</li>
+                            <li>Increased market share from 0.1% to 5% in a Tata-Ashok Leyland dominated market</li>
+                            <li>Generated consistent monthly revenues averaging ₹3.5 Cr</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VECV Gallery Section -->
+    <section id="vecv-gallery" class="vecv-gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">VECV Experience Gallery</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-intro">
+                <p>Highlights from my role as Channel Sales Manager at VE Commercial Vehicles Ltd. - Truck deliveries, marketing activities, and dealer management across Northeast India.</p>
+            </div>
+            <div class="vecv-gallery-grid">
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0132.png" alt="VECV Truck Delivery" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Truck Delivery</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0142.png" alt="VECV Marketing Activity" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Marketing Activity</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0321.png" alt="VECV Dealer Management" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Dealer Management</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0568.png" alt="VECV Sales Operations" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Sales Operations</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0582.png" alt="VECV Team Management" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Team Management</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_0655.png" alt="VECV Regional Operations" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Regional Operations</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_1125.png" alt="VECV Customer Engagement" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Customer Engagement</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_1436.png" alt="VECV Business Development" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Business Development</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_20220930_232815.png" alt="VECV Market Expansion" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Market Expansion</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_20220930_233133.png" alt="VECV Strategic Planning" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Strategic Planning</span>
+                    </div>
+                </div>
+                <div class="vecv-gallery-item">
+                    <img src="Photos-VECV/IMG_20220930_233347.png" alt="VECV Leadership Role" loading="lazy">
+                    <div class="vecv-overlay">
+                        <span>Leadership Role</span>
                     </div>
                 </div>
             </div>
@@ -181,58 +301,99 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-mobile-alt"></i>
+            
+            <!-- Digital Projects Subsection -->
+            <div class="projects-subsection">
+                <h3 class="subsection-title">💻 Digital Projects & Solutions</h3>
+                <p class="subsection-description">Web and mobile applications developed through Clear Solutions Services</p>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Focus: Assam Exams App</h3>
+                            <p>EdTech app for competitive exam preparation in Assam</p>
+                            <div class="project-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.examappfocusassam" target="_blank" class="project-link">
+                                    <i class="fab fa-google-play"></i> Play Store
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <h3>Focus: Assam Exams App</h3>
-                        <p>Mobile app for competitive exam aspirants in Assam</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.examappfocusassam" target="_blank" class="project-link">
-                                <i class="fab fa-google-play"></i> Play Store
-                            </a>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Saarthi Platform</h3>
+                            <p>Support & mentorship platform for India's careleavers (UNICEF + Aide Et Action)</p>
+                            <div class="project-links">
+                                <a href="https://careleaversindia.com" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Visit Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Cura Tech Engineering Website</h3>
+                            <p>Company profile for a construction & MEP firm in Assam</p>
+                            <div class="project-links">
+                                <a href="https://curatechengineering.com" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Visit Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Alex Healthcare Website</h3>
+                            <p>Professional portfolio for a healthcare infrastructure provider</p>
+                            <div class="project-links">
+                                <span class="project-status">🔄 Currently under content integration and deployment</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Saarthi Platform</h3>
-                        <p>Web portal for careleavers with mentor/psychologist support (UNICEF & Aide et Action)</p>
-                        <div class="project-links">
-                            <a href="https://careleaversindia.com" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
+            </div>
+
+            <!-- Business Ventures Subsection -->
+            <div class="projects-subsection">
+                <h3 class="subsection-title">🏢 Business Ventures</h3>
+                <p class="subsection-description">Independent entrepreneurial initiatives and business operations</p>
+                <div class="projects-grid business-grid">
+                    <div class="project-card business-card">
+                        <div class="project-image business-image">
+                            <i class="fas fa-home"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Cura Tech Engineering Website</h3>
-                        <p>Corporate site for MEP and construction services</p>
-                        <div class="project-links">
-                            <a href="https://curatechengineering.com" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Alex Healthcare Website</h3>
-                        <p>Portfolio for a healthcare infra firm (Ongoing)</p>
-                        <div class="project-links">
-                            <span class="project-status">In Progress</span>
+                        <div class="project-content">
+                            <h3>Vrindavan Residency</h3>
+                            <p class="business-subtitle">Homestay Business (Since April 2025)</p>
+                            <p>An independently-run homestay initiative with 2 fully-furnished 3BHK properties in Assam, offering both budget-friendly and luxury stays. Listed on platforms like MakeMyTrip, Booking.com, and Airbnb.</p>
+                            <div class="project-details">
+                                <h4>Roles & Involvement:</h4>
+                                <ul>
+                                    <li>Developed the business model and handled setup operations</li>
+                                    <li>Designed digital presence and managed guest bookings</li>
+                                    <li>Focused on customer experience, marketing, and local tourism promotion</li>
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.airbnb.co.in/rooms/1441095350118711587?viralityEntryPoint=1&s=76" target="_blank" class="project-link">
+                                    <i class="fab fa-airbnb"></i> Geetanagar Property
+                                </a>
+                                <a href="https://www.airbnb.co.in/rooms/1407050888097244980?viralityEntryPoint=1&s=76" target="_blank" class="project-link">
+                                    <i class="fab fa-airbnb"></i> Ambikagiri Property
+                                </a>
+                                <span class="project-status business-status">🏠 Active Business</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -249,67 +410,228 @@
             </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Business & Sales</h3>
+                    <h3>🧠 Strategic & Functional</h3>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <span class="skill-name">Business Development</span>
+                            <span class="skill-name">Sales Strategy</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 95%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Client Management</span>
+                            <span class="skill-name">Business Development</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Sales Strategy</span>
+                            <span class="skill-name">Client Relationship Management</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Project Planning & Delivery</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 87%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Marketing & Communication</h3>
+                    <h3>📢 Marketing & Communication</h3>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <span class="skill-name">Digital Marketing</span>
+                            <span class="skill-name">Digital Marketing Strategy</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Market Research</span>
+                            <span class="skill-name">Brand Positioning</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 82%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Communication & Leadership</span>
+                            <span class="skill-name">Market Research</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Content Planning</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 78%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Project & Education</h3>
+                    <h3>🛠 Technology & Tools</h3>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <span class="skill-name">Project Coordination</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 87%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Teaching & Mentorship</span>
+                            <span class="skill-name">Google Suite</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 92%"></div>
                             </div>
                         </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Excel</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Canva</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Mentorship Section -->
+    <section id="teaching" class="teaching">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Teaching & Mentorship</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="teaching-content">
+                <div class="teaching-card">
+                    <div class="teaching-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="teaching-info">
+                        <h3>🎓 Academic Development</h3>
+                        <p>Passionate about academic development, currently tutoring students of Classes 5 to 10 in Science, Mathematics, and Computer Science – blending real-world logic into curriculum-based learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Interests Section -->
+    <section id="interests" class="interests">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Personal Interests</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="interests-intro">
+                <p>Beyond my professional work, I'm deeply connected to my roots and find balance in activities that keep me grounded.</p>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h4>Bike Riding</h4>
+                    <p>Exploring new places on two wheels keeps my spirit adventurous and adaptable.</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h4>Assamese Folk & Bihu</h4>
+                    <p>Passionate about preserving and promoting Assam's rich cultural heritage.</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Gardening & Farming</h4>
+                    <p>I actively engage in small-scale agriculture and livestock care, valuing sustainability and self-sufficiency.</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Cultural Identity</h4>
+                    <p>I take pride in Assam's traditions and often participate in events that celebrate local art, music, and language.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vrindavan Residency Gallery</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-intro">
+                <p>Take a virtual tour of our homestay properties in Assam</p>
+            </div>
+            
+            <!-- Geetanagar Property -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-subtitle">🏠 Geetanagar Property</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Geetanagar/IMG_0554.png" alt="Vrindavan Residency Geetanagar - Living Area" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Living Area</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Geetanagar/IMG_0557.png" alt="Vrindavan Residency Geetanagar - Bedroom" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Bedroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Geetanagar/IMG_0561.png" alt="Vrindavan Residency Geetanagar - Kitchen" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Kitchen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-action">
+                    <a href="https://www.airbnb.co.in/rooms/1441095350118711587?viralityEntryPoint=1&s=76" target="_blank" class="btn btn-gallery">
+                        <i class="fab fa-airbnb"></i> View on Airbnb
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ambikagiri Property -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-subtitle">🏠 Ambikagiri Property</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Ambikagiri/IMG_0436.png" alt="Vrindavan Residency Ambikagiri - Living Area" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Living Area</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Ambikagiri/IMG_0440.png" alt="Vrindavan Residency Ambikagiri - Bedroom" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Bedroom</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Ambikagiri/IMG_0442.png" alt="Vrindavan Residency Ambikagiri - Kitchen" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Kitchen</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Photos-Vrindavan-Ambikagiri/IMG_0447.png" alt="Vrindavan Residency Ambikagiri - Bathroom" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>Bathroom</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-action">
+                    <a href="https://www.airbnb.co.in/rooms/1407050888097244980?viralityEntryPoint=1&s=76" target="_blank" class="btn btn-gallery">
+                        <i class="fab fa-airbnb"></i> View on Airbnb
+                    </a>
                 </div>
             </div>
         </div>
@@ -326,22 +648,20 @@
                 <div class="contact-info">
                     <h3>Let's Connect</h3>
                     <p>
-                        I'm always interested in new opportunities and collaborations. 
-                        Whether you have a project in mind or just want to chat about 
-                        business development and marketing strategies, feel free to reach out.
+                        I'm actively looking to collaborate on impactful projects and take on new challenges in sales, marketing, and tech-led business solutions.
                     </p>
                     <div class="contact-details">
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Available for opportunities</span>
-                        </div>
-                        <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Northeast India</span>
+                            <span>Available for: Full-time, Consulting, Remote roles</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Consultant & Marketing Manager</span>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:sandeepsonowal897@gmail.com" class="contact-link">sandeepsonowal897@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+918133895591" class="contact-link">+91-8133895591</a>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-linkedin"></i>
@@ -363,7 +683,12 @@
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -381,6 +706,7 @@
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
+                    <a href="#vecv-gallery">VECV Gallery</a>
                     <a href="#projects">Projects</a>
                     <a href="#skills">Skills</a>
                     <a href="#contact">Contact</a>

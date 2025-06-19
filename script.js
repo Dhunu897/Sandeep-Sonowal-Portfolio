@@ -81,7 +81,12 @@ skillBars.forEach(bar => {
     skillObserver.observe(bar);
 });
 
-// Contact form handling
+// EmailJS Configuration
+(function() {
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+})();
+
+// Contact form handling with EmailJS
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -105,9 +110,41 @@ if (contactForm) {
             return;
         }
         
-        // Simulate form submission
-        showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
-        this.reset();
+        // Show loading state
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-flex';
+        submitBtn.disabled = true;
+        
+        // Prepare email template parameters
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            subject: subject,
+            message: message,
+            to_name: 'Sandeep Sonowal',
+            to_email: 'sandeep.sonowal@example.com' // Replace with your actual email
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+            }, function(error) {
+                console.log('FAILED...', error);
+                showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
+            })
+            .finally(function() {
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            });
     });
 }
 
@@ -199,11 +236,11 @@ function typeWriter(element, text, speed = 100) {
                 element.innerHTML = textContent.substring(0, i + 1);
             } else if (i === 8) { // After "Hi, I'm "
                 // Add the span opening tag
-                element.innerHTML = 'Hi, I\'m <span class="highlight">';
+                element.innerHTML = textContent.substring(0, 8) + '<span class="highlight">';
             } else if (i > 8) {
                 // Add characters inside the span
                 const namePart = textContent.substring(8, i + 1);
-                element.innerHTML = `Hi, I'm <span class="highlight">${namePart}`;
+                element.innerHTML = textContent.substring(0, 8) + '<span class="highlight">' + namePart;
             }
             i++;
             setTimeout(type, speed);

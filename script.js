@@ -438,4 +438,120 @@ backToTopBtn.addEventListener('mouseenter', () => {
 backToTopBtn.addEventListener('mouseleave', () => {
     backToTopBtn.style.transform = 'translateY(0)';
     backToTopBtn.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+});
+
+// Video thumbnail functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const videoThumbnail = document.getElementById('videoThumbnail');
+    const videoEmbed = document.getElementById('videoEmbed');
+    const playButton = document.getElementById('playButton');
+    const playIcon = document.getElementById('playIcon');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    
+    if (videoThumbnail && videoEmbed) {
+        // Initial click to load and play video
+        playButton.addEventListener('click', () => {
+            // Load the YouTube video with proper embed URL and autoplay
+            youtubeIframe.src = 'https://www.youtube.com/embed/W9TadgboZ-s?si=2rV69u3bQtIPGpEd&start=2&autoplay=1&mute=1&rel=0&showinfo=0&modestbranding=1&allow=accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            
+            // Hide thumbnail and show video
+            videoThumbnail.style.display = 'none';
+            videoEmbed.style.display = 'flex';
+            
+            // Smooth transition
+            videoEmbed.style.opacity = '0';
+            videoEmbed.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                videoEmbed.style.opacity = '1';
+                videoEmbed.style.transform = 'scale(1)';
+            }, 50);
+        });
+        
+        // Listen for iframe load to handle video end
+        youtubeIframe.addEventListener('load', () => {
+            // Video loaded successfully
+            console.log('Video loaded');
+        });
+    }
+});
+
+// Carousel functionality
+let carouselStates = {};
+
+function initializeCarousels() {
+    const carousels = document.querySelectorAll('.carousel-track');
+    carousels.forEach(carousel => {
+        const carouselId = carousel.id;
+        carouselStates[carouselId] = {
+            currentSlide: 0,
+            totalSlides: carousel.children.length
+        };
+    });
+}
+
+function moveCarousel(carouselId, direction) {
+    const carousel = document.getElementById(carouselId);
+    const state = carouselStates[carouselId];
+    
+    if (!carousel || !state) return;
+    
+    state.currentSlide += direction;
+    
+    // Handle wrap-around
+    if (state.currentSlide >= state.totalSlides) {
+        state.currentSlide = 0;
+    } else if (state.currentSlide < 0) {
+        state.currentSlide = state.totalSlides - 1;
+    }
+    
+    updateCarousel(carouselId);
+}
+
+function goToSlide(carouselId, slideIndex) {
+    const state = carouselStates[carouselId];
+    if (!state) return;
+    
+    state.currentSlide = slideIndex;
+    updateCarousel(carouselId);
+}
+
+function updateCarousel(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const dots = document.getElementById(carouselId.replace('-carousel', '-dots'));
+    const state = carouselStates[carouselId];
+    
+    if (!carousel || !state) return;
+    
+    // Update carousel position
+    const translateX = -state.currentSlide * 100;
+    carousel.style.transform = `translateX(${translateX}%)`;
+    
+    // Update dots
+    if (dots) {
+        const dotElements = dots.querySelectorAll('.dot');
+        dotElements.forEach((dot, index) => {
+            if (index === state.currentSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Auto-advance carousel (optional)
+function startAutoAdvance(carouselId, interval = 5000) {
+    setInterval(() => {
+        moveCarousel(carouselId, 1);
+    }, interval);
+}
+
+// Initialize carousels when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCarousels();
+    
+    // Optional: Start auto-advance for carousels
+    // startAutoAdvance('geetanagar-carousel');
+    // startAutoAdvance('ambikagiri-carousel');
 }); 

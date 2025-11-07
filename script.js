@@ -154,6 +154,36 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+// Timeline toggle functionality
+function toggleTimeline(nodeId) {
+    const description = document.getElementById(`description-${nodeId}`);
+    const toggle = event.target.closest('.timeline__event__toggle');
+    const icon = toggle.querySelector('i');
+    
+    // Close all other descriptions
+    document.querySelectorAll('.timeline__event__description').forEach(desc => {
+        if (desc.id !== `description-${nodeId}`) {
+            desc.classList.remove('active');
+        }
+    });
+    
+    // Remove active class from all other toggle buttons
+    document.querySelectorAll('.timeline__event__toggle').forEach(btn => {
+        if (btn !== toggle) {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Toggle current description
+    if (description.classList.contains('active')) {
+        description.classList.remove('active');
+        toggle.classList.remove('active');
+    } else {
+        description.classList.add('active');
+        toggle.classList.add('active');
+    }
+}
+
 // Notification system
 function showNotification(message, type = 'info') {
     // Remove existing notifications

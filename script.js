@@ -586,6 +586,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // startAutoAdvance('ambikagiri-carousel');
 });
 
+// Experience Tabs
+document.addEventListener('DOMContentLoaded', () => {
+    const expTabs = document.querySelectorAll('.exp-tab');
+    const expDetails = document.querySelectorAll('.exp-detail');
+
+    expTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs and details
+            expTabs.forEach(t => t.classList.remove('active'));
+            expDetails.forEach(d => d.classList.remove('active'));
+
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Show corresponding detail
+            const company = tab.dataset.company;
+            const detail = document.getElementById(company);
+            if (detail) {
+                detail.classList.add('active');
+            }
+        });
+    });
+});
+
 // Tabbed Gallery
 document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.media-tab-item');

@@ -564,10 +564,7 @@ section {
     transition: all 0.3s ease;
 }
 
-.exp-tab:first-child img {
-    border-radius: 50%;
-    object-fit: cover;
-}
+/* Removed circular border for first tab to show full logo */
 
 .exp-tab span {
     font-size: 0.85rem;
@@ -601,7 +598,13 @@ section {
     filter: brightness(0) invert(1);
 }
 
+/* Keep Cambridge logo in original colors when active */
 .exp-tab:first-child.active img {
+    filter: none;
+}
+
+/* Keep Helion logo (circular) in original colors when active */
+.exp-tab:nth-child(2).active img {
     filter: none;
 }
 
@@ -648,10 +651,7 @@ section {
     background: var(--background-light);
 }
 
-.exp-logo-large:first-child {
-    border-radius: 50%;
-    object-fit: cover;
-}
+/* Removed circular border for Cambridge logo in detail view */
 
 .exp-company-info h3 {
     font-size: 1.5rem;
@@ -919,6 +919,23 @@ section {
 
 .timeline__event--type6 .timeline__event__title {
     color: #f59e0b;
+}
+
+.timeline__event--type7 .timeline__event__date {
+    background: linear-gradient(135deg, #0066cc, #003d7a);
+}
+
+.timeline__event--type7 .timeline__event__date img {
+    filter: none !important;
+}
+
+.timeline__event--type7 .timeline__event__date span {
+    color: white !important;
+    font-weight: 700;
+}
+
+.timeline__event--type7 .timeline__event__title {
+    color: #0066cc;
 }
 
 .timeline__event__description {

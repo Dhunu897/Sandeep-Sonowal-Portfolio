@@ -86,10 +86,12 @@ skillBars.forEach(bar => {
     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
 })();
 
-// Contact form handling with FormSubmit
+// Contact form handling with FormSubmit (AJAX - No Page Redirect)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
         // Get form data for validation
         const formData = new FormData(this);
         const name = formData.get('name');
@@ -99,13 +101,11 @@ if (contactForm) {
         
         // Simple validation
         if (!name || !email || !subject || !message) {
-            e.preventDefault();
             showNotification('Please fill in all fields', 'error');
             return;
         }
         
         if (!isValidEmail(email)) {
-            e.preventDefault();
             showNotification('Please enter a valid email address', 'error');
             return;
         }
@@ -119,39 +119,44 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        // Set flag for success message after redirect
-        localStorage.setItem('formSubmitted', 'true');
-        
-        // Form will submit naturally to FormSubmit
-        showNotification('Sending your message...', 'success');
+        try {
+            // Send to FormSubmit using fetch
+            const response = await fetch('https://formsubmit.co/ajax/sandeepsonowal897@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message,
+                    _subject: 'New Contact from Portfolio Website',
+                    _template: 'table'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Success!
+                showNotification('✅ Message sent successfully! Thank you for reaching out. I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeepsonowal897@gmail.com', 'error');
+        } finally {
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
     });
 }
-
-// Check if form was just submitted (after redirect back)
-document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('formSubmitted') === 'true') {
-        localStorage.removeItem('formSubmitted');
-        
-        // Show success popup
-        setTimeout(function() {
-            showNotification('✅ Message sent successfully! Thank you for reaching out. I\'ll get back to you soon.', 'success');
-            
-            // Reset form if it exists
-            const form = document.getElementById('contactForm');
-            if (form) {
-                form.reset();
-                const submitBtn = document.getElementById('submitBtn');
-                if (submitBtn) {
-                    const btnText = submitBtn.querySelector('.btn-text');
-                    const btnLoading = submitBtn.querySelector('.btn-loading');
-                    if (btnText) btnText.style.display = 'inline';
-                    if (btnLoading) btnLoading.style.display = 'none';
-                    submitBtn.disabled = false;
-                }
-            }
-        }, 500);
-    }
-});
 
 // Email validation
 function isValidEmail(email) {

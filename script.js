@@ -81,54 +81,70 @@ skillBars.forEach(bar => {
     skillObserver.observe(bar);
 });
 
-// EmailJS Configuration
-(function() {
-    emailjs.init("vXJovGVPDj4cSibQZ"); // Your Public Key
-})();
-
-// Contact form handling with EmailJS
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const btnLoading = submitBtn.querySelector('.btn-loading');
-        
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-flex';
-        submitBtn.disabled = true;
-        
-        // Send email using EmailJS
-        emailjs.sendForm('service_j6vm1wj', 'template_zidng4h', this)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                
-                // Show success modal
-                showSuccessModal();
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button state
+// EmailJS Configuration - Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("vXJovGVPDj4cSibQZ"); // Your Public Key
+        console.log('EmailJS initialized successfully');
+    } else {
+        console.error('EmailJS SDK not loaded');
+    }
+    
+    // Contact form handling with EmailJS
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-flex';
+            submitBtn.disabled = true;
+            
+            // Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS is not loaded');
+                showNotification('Email service not loaded. Please refresh the page and try again.', 'error');
                 btnText.style.display = 'inline';
                 btnLoading.style.display = 'none';
                 submitBtn.disabled = false;
-            }, function(error) {
-                console.log('FAILED...', error);
-                
-                // Show error notification
-                showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeep897@outlook.com', 'error');
-                
-                // Reset button state
-                btnText.style.display = 'inline';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
-            });
-    });
-}
+                return;
+            }
+            
+            // Send email using EmailJS
+            emailjs.sendForm('service_j6vm1wj', 'template_zidng4h', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success modal
+                    showSuccessModal();
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button state
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error notification
+                    showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeep897@outlook.com', 'error');
+                    
+                    // Reset button state
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                });
+        });
+    }
+});
 
 // Success Modal Functions
 function showSuccessModal() {

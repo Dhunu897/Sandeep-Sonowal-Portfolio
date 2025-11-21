@@ -1022,10 +1022,11 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <!-- FormSubmit Configuration (for AJAX) -->
+                    <form id="contactForm" action="https://formsubmit.co/sandeepsonowal897@gmail.com" method="POST" target="hidden_iframe">
+                        <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://sandeep-sonowal-portfolio.vercel.app/#success">
                         
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1046,6 +1047,8 @@
                             </span>
                         </button>
                     </form>
+                    <!-- Hidden iframe to prevent page redirect -->
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>

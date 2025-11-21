@@ -86,15 +86,10 @@ skillBars.forEach(bar => {
     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
 })();
 
-// Contact form handling with FormSubmit (AJAX)
+// Contact form handling with iframe submission (no page redirect)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        
+    contactForm.addEventListener('submit', function(e) {
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
         const btnText = submitBtn.querySelector('.btn-text');
@@ -104,47 +99,30 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        try {
-            // Convert FormData to object for JSON
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
+        // Form will submit to hidden iframe
+        // After 2 seconds, show success modal
+        setTimeout(function() {
+            // Show success modal
+            showSuccessModal();
             
-            console.log('Sending form data:', formObject);
+            // Reset form
+            contactForm.reset();
             
-            // Send to FormSubmit using AJAX endpoint
-            const response = await fetch('https://formsubmit.co/ajax/sandeepsonowal897@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formObject)
-            });
-            
-            const data = await response.json();
-            console.log('FormSubmit response:', data);
-            
-            if (data.success === "true" || data.success === true) {
-                // Show success modal
-                showSuccessModal();
-                // Reset form
-                contactForm.reset();
-            } else {
-                throw new Error(data.message || 'Failed to send message');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeepsonowal897@gmail.com', 'error');
-        } finally {
             // Reset button state
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
             submitBtn.disabled = false;
-        }
+        }, 2000);
     });
 }
+
+// Check if redirected back with success hash
+window.addEventListener('load', function() {
+    if (window.location.hash === '#success') {
+        // Remove the hash
+        history.replaceState(null, null, ' ');
+    }
+});
 
 // Success Modal Functions
 function showSuccessModal() {

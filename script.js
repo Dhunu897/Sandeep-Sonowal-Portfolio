@@ -119,11 +119,39 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
+        // Set flag for success message after redirect
+        localStorage.setItem('formSubmitted', 'true');
+        
         // Form will submit naturally to FormSubmit
-        // Show success message before redirect
         showNotification('Sending your message...', 'success');
     });
 }
+
+// Check if form was just submitted (after redirect back)
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('formSubmitted') === 'true') {
+        localStorage.removeItem('formSubmitted');
+        
+        // Show success popup
+        setTimeout(function() {
+            showNotification('✅ Message sent successfully! Thank you for reaching out. I\'ll get back to you soon.', 'success');
+            
+            // Reset form if it exists
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.reset();
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn) {
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const btnLoading = submitBtn.querySelector('.btn-loading');
+                    if (btnText) btnText.style.display = 'inline';
+                    if (btnLoading) btnLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                }
+            }
+        }, 500);
+    }
+});
 
 // Email validation
 function isValidEmail(email) {

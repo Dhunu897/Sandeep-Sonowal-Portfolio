@@ -86,30 +86,10 @@ skillBars.forEach(bar => {
     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
 })();
 
-// Contact form handling with FormSubmit (AJAX - No Page Redirect)
+// Contact form handling with FormSubmit
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Get form data for validation
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
-        
-        // Simple validation
-        if (!name || !email || !subject || !message) {
-            showNotification('Please fill in all fields', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email address', 'error');
-            return;
-        }
-        
+    contactForm.addEventListener('submit', function(e) {
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
         const btnText = submitBtn.querySelector('.btn-text');
@@ -119,42 +99,8 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        try {
-            // Send to FormSubmit using fetch
-            const response = await fetch('https://formsubmit.co/ajax/sandeepsonowal897@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message,
-                    _subject: 'New Contact from Portfolio Website',
-                    _template: 'table'
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (response.ok) {
-                // Success!
-                showNotification('✅ Message sent successfully! Thank you for reaching out. I\'ll get back to you soon.', 'success');
-                contactForm.reset();
-            } else {
-                throw new Error('Failed to send message');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeepsonowal897@gmail.com', 'error');
-        } finally {
-            // Reset button state
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }
+        // Let the form submit normally - FormSubmit will handle it and redirect back
+        // The form will redirect to the _next URL after successful submission
     });
 }
 

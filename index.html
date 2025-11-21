@@ -1022,11 +1022,10 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/sandeepsonowal897@gmail.com" method="POST">
-                        <!-- FormSubmit Configuration -->
+                    <form id="contactForm">
+                        <!-- FormSubmit Configuration (for AJAX) -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://sandeep-sonowal-portfolio.vercel.app/#contact">
                         
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1078,6 +1077,18 @@
         <img class="lightbox-content" id="lightboxImg">
         <a class="lightbox-prev">&#10094;</a>
         <a class="lightbox-next">&#10095;</a>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+            <button class="btn btn-primary" onclick="closeSuccessModal()">Close</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

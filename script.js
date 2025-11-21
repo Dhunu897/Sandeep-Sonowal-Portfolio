@@ -86,10 +86,19 @@ skillBars.forEach(bar => {
     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
 })();
 
-// Contact form handling with FormSubmit
+// Contact form handling with FormSubmit (AJAX)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('_subject');
+        const message = formData.get('message');
+        
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
         const btnText = submitBtn.querySelector('.btn-text');
@@ -99,9 +108,63 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        // Let the form submit normally - FormSubmit will handle it and redirect back
-        // The form will redirect to the _next URL after successful submission
+        try {
+            // Send to FormSubmit using AJAX endpoint
+            const response = await fetch('https://formsubmit.co/ajax/sandeepsonowal897@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    _subject: subject,
+                    message: message,
+                    _template: 'table',
+                    _captcha: 'false'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.success) {
+                // Show success modal
+                showSuccessModal();
+                // Reset form
+                contactForm.reset();
+            } else {
+                throw new Error(data.message || 'Failed to send message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeepsonowal897@gmail.com', 'error');
+        } finally {
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
     });
+}
+
+// Success Modal Functions
+function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        // Add blur to background
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'none';
+        // Remove blur from background
+        document.body.style.overflow = 'auto';
+    }
 }
 
 // Email validation

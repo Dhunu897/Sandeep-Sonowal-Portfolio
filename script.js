@@ -83,13 +83,15 @@ skillBars.forEach(bar => {
 
 // EmailJS Configuration
 (function() {
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    emailjs.init("vXJovGVPDj4cSibQZ"); // Your Public Key
 })();
 
-// Contact form handling with iframe submission (no page redirect)
+// Contact form handling with EmailJS
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
         const btnText = submitBtn.querySelector('.btn-text');
@@ -99,30 +101,34 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        // Form will submit to hidden iframe
-        // After 2 seconds, show success modal
-        setTimeout(function() {
-            // Show success modal
-            showSuccessModal();
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button state
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }, 2000);
+        // Send email using EmailJS
+        emailjs.sendForm('service_j6vm1wj', 'template_zidng4h', this)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                
+                // Show success modal
+                showSuccessModal();
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }, function(error) {
+                console.log('FAILED...', error);
+                
+                // Show error notification
+                showNotification('Sorry, there was an error sending your message. Please try emailing me directly at sandeep897@outlook.com', 'error');
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            });
     });
 }
-
-// Check if redirected back with success hash
-window.addEventListener('load', function() {
-    if (window.location.hash === '#success') {
-        // Remove the hash
-        history.replaceState(null, null, ' ');
-    }
-});
 
 // Success Modal Functions
 function showSuccessModal() {

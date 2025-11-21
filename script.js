@@ -86,13 +86,11 @@ skillBars.forEach(bar => {
     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
 })();
 
-// Contact form handling with EmailJS
+// Contact form handling with FormSubmit
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
+        // Get form data for validation
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
@@ -101,11 +99,13 @@ if (contactForm) {
         
         // Simple validation
         if (!name || !email || !subject || !message) {
+            e.preventDefault();
             showNotification('Please fill in all fields', 'error');
             return;
         }
         
         if (!isValidEmail(email)) {
+            e.preventDefault();
             showNotification('Please enter a valid email address', 'error');
             return;
         }
@@ -119,32 +119,9 @@ if (contactForm) {
         btnLoading.style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        // Prepare email template parameters
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            subject: subject,
-            message: message,
-            to_name: 'Sandeep Sonowal',
-            to_email: 'sandeep.sonowal@example.com' // Replace with your actual email
-        };
-        
-        // Send email using EmailJS
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
-                contactForm.reset();
-            }, function(error) {
-                console.log('FAILED...', error);
-                showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
-            })
-            .finally(function() {
-                // Reset button state
-                btnText.style.display = 'inline';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
-            });
+        // Form will submit naturally to FormSubmit
+        // Show success message before redirect
+        showNotification('Sending your message...', 'success');
     });
 }
 

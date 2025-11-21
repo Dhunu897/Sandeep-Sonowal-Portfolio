@@ -94,10 +94,6 @@ if (contactForm) {
         
         // Get form data
         const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('_subject');
-        const message = formData.get('message');
         
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
@@ -109,6 +105,14 @@ if (contactForm) {
         submitBtn.disabled = true;
         
         try {
+            // Convert FormData to object for JSON
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            console.log('Sending form data:', formObject);
+            
             // Send to FormSubmit using AJAX endpoint
             const response = await fetch('https://formsubmit.co/ajax/sandeepsonowal897@gmail.com', {
                 method: 'POST',
@@ -116,19 +120,13 @@ if (contactForm) {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    _subject: subject,
-                    message: message,
-                    _template: 'table',
-                    _captcha: 'false'
-                })
+                body: JSON.stringify(formObject)
             });
             
             const data = await response.json();
+            console.log('FormSubmit response:', data);
             
-            if (response.ok && data.success) {
+            if (data.success === "true" || data.success === true) {
                 // Show success modal
                 showSuccessModal();
                 // Reset form

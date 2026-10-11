@@ -2,15 +2,20 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
+const setNavigationOpen = (isOpen) => {
+    hamburger.classList.toggle('active', isOpen);
+    navMenu.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+};
+
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+    setNavigationOpen(!navMenu.classList.contains('active'));
 });
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
+    setNavigationOpen(false);
 }));
 
 // Smooth scrolling for navigation links
